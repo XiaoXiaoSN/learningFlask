@@ -1,0 +1,34 @@
+"""
+    Config file control DevOps environment, using different config setting in
+    different environment. please dont commit your config.py file.
+"""
+
+# default config
+class BaseConfig(object):
+    # the name and port number of the server.
+    SERVER_NAME = ''
+    DEBUG = False
+    SECRET_KEY = ''
+
+# development config
+class DevelopmentConfig(BaseConfig):
+    DEBUG = True
+
+# production config
+class ProductionConfig(BaseConfig):
+    DEBUG = False
+
+# MySQL
+class MySQLConfig(object):
+    MySQL_HOST = ''
+    MySQL_PORT = 3306
+    MySQL_DATABASE=''
+    MySQL_USERNAME=''
+    MySQL_PASSWORD=''
+
+config = {
+    'development': DevelopmentConfig,
+    'production': ProductionConfig,
+
+    'default': DevelopmentConfig
+}
